@@ -6,6 +6,7 @@ const ScoreBoard = (): JSX.Element => {
   return (
     <>
       <h1>Score Board</h1>
+      <h2>Start Game</h2>
     </>
   )
 }
@@ -21,5 +22,11 @@ describe('<ScoreBoard />', () => {
     render(<ScoreBoard />)
 
     screen.getByText('Score Board')
+  })
+
+  it('should render "Start game" section', () => {
+    render(<ScoreBoard />)
+
+    screen.getByText('Start Game')
   })
 })
