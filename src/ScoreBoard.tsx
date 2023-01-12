@@ -71,6 +71,8 @@ const ScoreBoard = (): JSX.Element => {
         </div>
         <button>Finish Game</button>
       </form>
+
+      <h2>Matches</h2>
     </>
   )
 }
