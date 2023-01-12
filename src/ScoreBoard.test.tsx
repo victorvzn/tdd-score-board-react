@@ -57,11 +57,11 @@ describe('<ScoreBoard />', () => {
 
       const finishGameButton: HTMLButtonElement = screen.getByText('Finish Game')
 
-      homeTeamName.defaultValue = 'Peru'
-      homeTeamScore.defaultValue = '6'
+      await user.type(homeTeamName, 'Peru')
+      await user.type(homeTeamScore, '5')
 
-      awayTeamName.defaultValue = 'Nigeria'
-      awayTeamScore.defaultValue = '3'
+      await user.type(awayTeamName, 'Nigeria')
+      await user.type(awayTeamScore, '2')
 
       await user.click(finishGameButton)
 
@@ -90,11 +90,11 @@ describe('<ScoreBoard />', () => {
 
       const finishGameButton: HTMLButtonElement = screen.getByText('Finish Game')
 
-      homeTeamName.defaultValue = 'Peru'
-      homeTeamScore.defaultValue = '6'
+      await user.type(homeTeamName, 'Peru')
+      await user.type(homeTeamScore, '6')
 
-      awayTeamName.defaultValue = 'Nigeria'
-      awayTeamScore.defaultValue = '3'
+      await user.type(awayTeamName, 'Nigeria')
+      await user.type(awayTeamScore, '3')
 
       await user.click(finishGameButton)
 
