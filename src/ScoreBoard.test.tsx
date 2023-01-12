@@ -9,10 +9,6 @@ describe('<ScoreBoard />', () => {
   afterEach(cleanup)
 
   describe('ScoreBoard', () => {
-    it('should render', () => {
-      render(<ScoreBoard />)
-    })
-
     it('should render title correctly', () => {
       render(<ScoreBoard />)
 
