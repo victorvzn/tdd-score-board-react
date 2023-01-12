@@ -73,6 +73,8 @@ const ScoreBoard = (): JSX.Element => {
       </form>
 
       <h2>Matches</h2>
+
+      Peru 6 - Nigeria 3
     </>
   )
 }

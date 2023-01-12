@@ -1,6 +1,6 @@
 
 import { cleanup, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, it, expect } from 'vitest'
 import userEvent from '@testing-library/user-event'
 
 import ScoreBoard from './ScoreBoard'
@@ -76,6 +76,34 @@ describe('<ScoreBoard />', () => {
       render(<ScoreBoard />)
 
       screen.getByText('Matches')
+    })
+
+    it('should list a match after finish game', async () => {
+      const user = userEvent.setup()
+
+      render(<ScoreBoard />)
+
+      const homeTeamName: HTMLInputElement = screen.getByPlaceholderText('Home Team Name')
+      const homeTeamScore: HTMLInputElement = screen.getByPlaceholderText('Home Team Score')
+      const awayTeamName: HTMLInputElement = screen.getByPlaceholderText('Away Team Name')
+      const awayTeamScore: HTMLInputElement = screen.getByPlaceholderText('Away Team Score')
+
+      const finishGameButton: HTMLButtonElement = screen.getByText('Finish Game')
+
+      homeTeamName.defaultValue = 'Peru'
+      homeTeamScore.defaultValue = '6'
+
+      awayTeamName.defaultValue = 'Nigeria'
+      awayTeamScore.defaultValue = '3'
+
+      await user.click(finishGameButton)
+
+      screen.getByText('Peru 6 - Nigeria 3')
+    })
+  })
+
+  describe.skip('Update score', () => {
+    it('', async () => {
     })
   })
 })
