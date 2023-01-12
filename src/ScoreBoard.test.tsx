@@ -71,5 +71,11 @@ describe('<ScoreBoard />', () => {
       expect(awayTeamName.value).toBe('')
       expect(awayTeamScore.value).toBe('0')
     })
+
+    it('should render title correctly', async () => {
+      render(<ScoreBoard />)
+
+      screen.getByText('Matches')
+    })
   })
 })
