@@ -8,23 +8,25 @@ import ScoreBoard from './ScoreBoard'
 describe('<ScoreBoard />', () => {
   afterEach(cleanup)
 
-  it('should render', () => {
-    render(<ScoreBoard />)
-  })
+  describe('ScoreBoard', () => {
+    it('should render', () => {
+      render(<ScoreBoard />)
+    })
 
-  it('should render title correctly', () => {
-    render(<ScoreBoard />)
+    it('should render title correctly', () => {
+      render(<ScoreBoard />)
 
-    screen.getByText('Score Board')
-  })
-
-  it('should render "Start game" section', () => {
-    render(<ScoreBoard />)
-
-    screen.getByText('Start Game')
+      screen.getByText('Score Board')
+    })
   })
 
   describe('Start a game', () => {
+    it('should render "Start game" section', () => {
+      render(<ScoreBoard />)
+
+      screen.getByText('Start Game')
+    })
+
     it('should capture home team and away team names and scores', () => {
       render(<ScoreBoard />)
 
@@ -47,7 +49,7 @@ describe('<ScoreBoard />', () => {
   })
 
   describe('End a game', () => {
-    it('will remove a match from the scoreboard', async () => {
+    it('should remove a match from the scoreboard', async () => {
       const user = userEvent.setup()
 
       render(<ScoreBoard />)
