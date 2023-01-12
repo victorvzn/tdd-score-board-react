@@ -1,23 +1,34 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+
+interface MatchState {
+  homeTeamName: string,
+  homeTeamScore: number,
+  awayTeamName: string,
+  awayTeamScore: number
+}
 
 const ScoreBoard = (): JSX.Element => {
   const DEFAULT_FORM = {
     homeTeamName: '',
-    homeTeamScore: '0',
+    homeTeamScore: 0,
     awayTeamName: '',
-    awayTeamScore: '0'
+    awayTeamScore: 0
   }
 
-  const [form, setForm] = useState(DEFAULT_FORM)
+  const [matches, setMatches] = useState<Array<MatchState>>([])
 
-  const handleChange = (event) => {
+  const [form, setForm] = useState<MatchState>(DEFAULT_FORM)
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
 
     setForm({ ...form, [name]: value })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    setMatches([...matches, form])
 
     setForm(DEFAULT_FORM)
   }
@@ -74,7 +85,14 @@ const ScoreBoard = (): JSX.Element => {
 
       <h2>Matches</h2>
 
-      Peru 6 - Nigeria 3
+      <ul>
+        {matches.map((match, index) => {
+          const scores = `${match.homeTeamName} ${Number(match.homeTeamScore)} - ${match.awayTeamName} ${Number(match.awayTeamScore)}`
+          return (
+            <li key={index}>{scores}</li>
+          )
+        })}
+      </ul>
     </>
   )
 }
