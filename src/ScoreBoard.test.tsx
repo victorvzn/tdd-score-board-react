@@ -17,6 +17,7 @@ const ScoreBoard = (): JSX.Element => {
           type='text'
           name='homeTeamScore'
           placeholder='Home Team Score'
+          value='0'
         />
         <input
           type='text'
@@ -27,6 +28,7 @@ const ScoreBoard = (): JSX.Element => {
           type='text'
           name='awayTeamScore'
           placeholder='Away Team Score'
+          value='0'
         />
       </form>
     </>
