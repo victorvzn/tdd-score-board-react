@@ -1,7 +1,9 @@
+import ScoreBoard from './ScoreBoard'
+
 function App () {
   return (
     <div className='App'>
-      <h1>TDD Demo</h1>
+      <ScoreBoard />
     </div>
   )
 }
