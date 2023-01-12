@@ -1,4 +1,6 @@
 
+import React from 'react'
+
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, describe, it, expect } from 'vitest'
 import userEvent from '@testing-library/user-event'
@@ -99,6 +101,37 @@ describe('<ScoreBoard />', () => {
       await user.click(finishGameButton)
 
       screen.getByText('Peru 6 - Nigeria 3')
+    })
+
+    it('should list matchs after finish each game', async () => {
+      const user = userEvent.setup()
+
+      render(<ScoreBoard />)
+
+      const homeTeamName: HTMLInputElement = screen.getByPlaceholderText('Home Team Name')
+      const homeTeamScore: HTMLInputElement = screen.getByPlaceholderText('Home Team Score')
+      const awayTeamName: HTMLInputElement = screen.getByPlaceholderText('Away Team Name')
+      const awayTeamScore: HTMLInputElement = screen.getByPlaceholderText('Away Team Score')
+
+      const finishGameButton: HTMLButtonElement = screen.getByText('Finish Game')
+
+      await user.type(homeTeamName, 'Peru')
+      await user.type(homeTeamScore, '7')
+
+      await user.type(awayTeamName, 'Nigeria')
+      await user.type(awayTeamScore, '4')
+
+      await user.click(finishGameButton)
+      screen.getByText('Peru 7 - Nigeria 4')
+
+      await user.type(homeTeamName, 'Netherlands')
+      await user.type(homeTeamScore, '2')
+
+      await user.type(awayTeamName, 'Argentina')
+      await user.type(awayTeamScore, '2')
+
+      await user.click(finishGameButton)
+      screen.getByText('Netherlands 2 - Argentina 2')
     })
   })
 
