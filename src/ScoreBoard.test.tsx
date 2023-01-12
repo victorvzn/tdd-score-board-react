@@ -1,6 +1,6 @@
 
 import { cleanup, render, screen } from '@testing-library/react'
-import { afterEach, describe, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 
 const ScoreBoard = (): JSX.Element => {
   return (
@@ -61,6 +61,16 @@ describe('<ScoreBoard />', () => {
 
       screen.getByPlaceholderText('Away Team Name')
       screen.getByPlaceholderText('Away Team Score')
+    })
+
+    it('should be initial score 0 - 0', () => {
+      render(<ScoreBoard />)
+
+      const homeTeamScore: HTMLInputElement = screen.getByPlaceholderText('Home Team Score')
+      const awayTeamScore: HTMLInputElement = screen.getByPlaceholderText('Away Team Score')
+
+      expect(homeTeamScore.value).toBe('0')
+      expect(awayTeamScore.value).toBe('0')
     })
   })
 })
