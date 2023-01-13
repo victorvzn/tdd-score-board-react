@@ -60,7 +60,7 @@ describe('<ScoreBoard />', () => {
       const awayTeamScore: HTMLInputElement = screen.getByPlaceholderText('Away Team Score')
 
       const finishGameButton: HTMLButtonElement = screen.getByText('Finish Game')
-      
+
       await user.type(homeTeamName, 'Peru')
       await user.type(homeTeamScore, '5')
 
@@ -104,31 +104,6 @@ describe('<ScoreBoard />', () => {
 
       expect(awayTeamName.value).toBe('')
       expect(awayTeamScore.value).toBe('0')
-    })
-
-    it('should render title correctly', async () => {
-      render(<ScoreBoard matches={[]} />)
-
-      screen.getByText('Matches')
-    })
-
-    it('should render a set of matches when matches passed to it', async () => {
-      const mockMatches = [
-        {
-          homeTeamName: 'Team A',
-          homeTeamScore: 1,
-          awayTeamName: 'Team B',
-          awayTeamScore: 2
-        },
-        {
-          homeTeamName: 'Team Y',
-          homeTeamScore: 3,
-          awayTeamName: 'Team Z',
-          awayTeamScore: 4
-        }
-      ]
-
-      render(<ScoreBoard matches={mockMatches} />)
     })
 
     it.skip('should list a match after finish game', async () => {
@@ -209,5 +184,78 @@ describe('<ScoreBoard />', () => {
 
     it.skip('Receiving by pair score; home team score and way team score updates a game score', async () => {
     })
+  })
+})
+
+export interface Props {
+  matches?: Array<MatchState>
+}
+
+const MatchList: React.FC<Props> = ({ matches = [] }): JSX.Element => {
+  return (
+    <>
+      <h2>Matches</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Home Team</th>
+            <th>Score</th>
+            <th>Away Team</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {matches.map((match, index) => {
+            return (
+              <tr key={index}>
+                <td>
+                  {match.homeTeamName}
+                </td>
+                <td>
+                  ${match.homeTeamScore}
+                </td>
+                <td>
+                  {match.awayTeamName}
+                </td>
+                <td>
+                  {Number(match.awayTeamScore)}
+                </td>
+                <td>
+                  <button>Update Scores</button>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </>
+  )
+}
+
+describe('<MatchList />', () => {
+  it('should render title correctly', async () => {
+    render(<MatchList />)
+
+    screen.getByText('Matches')
+  })
+
+  it('should render a set of matches when matches passed to it', async () => {
+    const mockMatches = [
+      {
+        homeTeamName: 'Team A',
+        homeTeamScore: 1,
+        awayTeamName: 'Team B',
+        awayTeamScore: 2
+      },
+      {
+        homeTeamName: 'Team Y',
+        homeTeamScore: 3,
+        awayTeamName: 'Team Z',
+        awayTeamScore: 4
+      }
+    ]
+
+    render(<MatchList matches={mockMatches} />)
   })
 })
