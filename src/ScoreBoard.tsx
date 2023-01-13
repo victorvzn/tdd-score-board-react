@@ -85,14 +85,28 @@ const ScoreBoard = (): JSX.Element => {
 
       <h2>Matches</h2>
 
-      <ul>
-        {matches.map((match, index) => {
-          const scores = `${match.homeTeamName} ${Number(match.homeTeamScore)} - ${match.awayTeamName} ${Number(match.awayTeamScore)}`
-          return (
-            <li key={index}>{scores}</li>
-          )
-        })}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Home Team</th>
+            <th>Away Team</th>
+          </tr>
+        </thead>
+        <tbody>
+          {matches.map((match, index) => {
+            return (
+              <tr key={index}>
+                <td>
+                  {`${match.homeTeamName} ${Number(match.homeTeamScore)}`}
+                </td>
+                <td>
+                  {`${match.awayTeamName} ${Number(match.awayTeamScore)}`}
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     </>
   )
 }

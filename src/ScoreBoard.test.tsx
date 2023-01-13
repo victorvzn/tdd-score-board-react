@@ -100,7 +100,8 @@ describe('<ScoreBoard />', () => {
 
       await user.click(finishGameButton)
 
-      screen.getByText('Peru 6 - Nigeria 3')
+      screen.getByText('Peru 6')
+      screen.getByText('Nigeria 3')
     })
 
     it('should list matchs after finish each game', async () => {
@@ -122,7 +123,8 @@ describe('<ScoreBoard />', () => {
       await user.type(awayTeamScore, '4')
 
       await user.click(finishGameButton)
-      screen.getByText('Peru 7 - Nigeria 4')
+      screen.getByText('Peru 7')
+      screen.getByText('Nigeria 4')
 
       await user.type(homeTeamName, 'Netherlands')
       await user.type(homeTeamScore, '2')
@@ -131,7 +133,9 @@ describe('<ScoreBoard />', () => {
       await user.type(awayTeamScore, '2')
 
       await user.click(finishGameButton)
-      screen.getByText('Netherlands 2 - Argentina 2')
+
+      screen.getByText('Netherlands 2')
+      screen.getByText('Argentina 2')
     })
   })
 
