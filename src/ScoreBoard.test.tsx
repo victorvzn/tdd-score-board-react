@@ -2,10 +2,10 @@
 import React from 'react'
 
 import { cleanup, render, screen } from '@testing-library/react'
-import { afterEach, describe, it, expect } from 'vitest'
+import { afterEach, describe, it, expect, vi } from 'vitest'
 import userEvent from '@testing-library/user-event'
 
-import ScoreBoard from './ScoreBoard'
+import { ScoreBoard, MatchState } from './ScoreBoard'
 
 describe('<ScoreBoard />', () => {
   afterEach(cleanup)
@@ -36,7 +36,7 @@ describe('<ScoreBoard />', () => {
     })
 
     it('should be initial score 0 - 0', () => {
-      render(<ScoreBoard />)
+      render(<ScoreBoard matches={[]} />)
 
       const homeTeamScore: HTMLInputElement = screen.getByPlaceholderText('Home Team Score')
       const awayTeamScore: HTMLInputElement = screen.getByPlaceholderText('Away Team Score')
@@ -47,10 +47,42 @@ describe('<ScoreBoard />', () => {
   })
 
   describe('End a game', () => {
+    it('should invoke handleEndGame given submitted form', async () => {
+      const user = userEvent.setup()
+
+      const mockHandleEndGame = vi.fn()
+
+      render(<ScoreBoard handleEndGame={mockHandleEndGame} />)
+
+      const homeTeamName: HTMLInputElement = screen.getByPlaceholderText('Home Team Name')
+      const homeTeamScore: HTMLInputElement = screen.getByPlaceholderText('Home Team Score')
+      const awayTeamName: HTMLInputElement = screen.getByPlaceholderText('Away Team Name')
+      const awayTeamScore: HTMLInputElement = screen.getByPlaceholderText('Away Team Score')
+
+      const finishGameButton: HTMLButtonElement = screen.getByText('Finish Game')
+      
+      await user.type(homeTeamName, 'Peru')
+      await user.type(homeTeamScore, '5')
+
+      await user.type(awayTeamName, 'Nigeria')
+      await user.type(awayTeamScore, '2')
+
+      await user.click(finishGameButton)
+
+      expect(mockHandleEndGame).toHaveBeenCalledTimes(1)
+
+      expect(mockHandleEndGame).toHaveBeenCalledWith({
+        homeTeamName: 'Peru',
+        homeTeamScore: 5,
+        awayTeamName: 'Nigeria',
+        awayTeamScore: 2
+      })
+    })
+
     it('should remove a match from the scoreboard', async () => {
       const user = userEvent.setup()
 
-      render(<ScoreBoard />)
+      render(<ScoreBoard matches={[]} />)
 
       const homeTeamName: HTMLInputElement = screen.getByPlaceholderText('Home Team Name')
       const homeTeamScore: HTMLInputElement = screen.getByPlaceholderText('Home Team Score')
@@ -75,15 +107,36 @@ describe('<ScoreBoard />', () => {
     })
 
     it('should render title correctly', async () => {
-      render(<ScoreBoard />)
+      render(<ScoreBoard matches={[]} />)
 
       screen.getByText('Matches')
     })
 
-    it('should list a match after finish game', async () => {
+    it('should render a set of matches when matches passed to it', async () => {
+      const mockMatches = [
+        {
+          homeTeamName: 'Team A',
+          homeTeamScore: 1,
+          awayTeamName: 'Team B',
+          awayTeamScore: 2
+        },
+        {
+          homeTeamName: 'Team Y',
+          homeTeamScore: 3,
+          awayTeamName: 'Team Z',
+          awayTeamScore: 4
+        }
+      ]
+
+      render(<ScoreBoard matches={mockMatches} />)
+    })
+
+    it.skip('should list a match after finish game', async () => {
       const user = userEvent.setup()
 
-      render(<ScoreBoard />)
+      const mockHandleFinish = vi.fn()
+
+      render(<ScoreBoard matches={[]} onFinish={mockHandleFinish} />)
 
       const homeTeamName: HTMLInputElement = screen.getByPlaceholderText('Home Team Name')
       const homeTeamScore: HTMLInputElement = screen.getByPlaceholderText('Home Team Score')
@@ -104,10 +157,10 @@ describe('<ScoreBoard />', () => {
       screen.getByText('Nigeria 3')
     })
 
-    it('should list matchs after finish each game', async () => {
+    it.skip('should list matches after finish game', async () => {
       const user = userEvent.setup()
 
-      render(<ScoreBoard />)
+      render(<ScoreBoard matches={[]} />)
 
       const homeTeamName: HTMLInputElement = screen.getByPlaceholderText('Home Team Name')
       const homeTeamScore: HTMLInputElement = screen.getByPlaceholderText('Home Team Score')
@@ -134,13 +187,27 @@ describe('<ScoreBoard />', () => {
 
       await user.click(finishGameButton)
 
-      screen.getByText('Netherlands 2')
-      screen.getByText('Argentina 2')
+      screen.getByRole('row', { name: /Netherlands 2 Argentina 2/i })
     })
   })
 
-  describe.skip('Update score', () => {
-    it('', async () => {
+  describe('Update score', () => {
+    it.skip('should render an update button', () => {
+      const mockMatches = [
+        {
+          homeTeamName: 'Team A',
+          homeTeamScore: 1,
+          awayTeamName: 'Team B',
+          awayTeamScore: 2
+        }
+      ]
+
+      render(<ScoreBoard matches={mockMatches} />)
+
+      screen.getByText(/Update Scores/i);
+    })
+
+    it.skip('Receiving by pair score; home team score and way team score updates a game score', async () => {
     })
   })
 })

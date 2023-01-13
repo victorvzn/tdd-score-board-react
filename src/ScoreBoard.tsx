@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 
-interface MatchState {
+export interface MatchState {
   homeTeamName: string,
   homeTeamScore: number,
   awayTeamName: string,
   awayTeamScore: number
 }
 
-const ScoreBoard = (): JSX.Element => {
+export interface Props {
+  matches?: Array <MatchState>,
+  handleEndGame?: (form: MatchState) => object
+}
+
+export const ScoreBoard: React.FC<Props> = ({ matches = [], handleEndGame = () => {} }): JSX.Element => {
   const DEFAULT_FORM = {
     homeTeamName: '',
     homeTeamScore: 0,
@@ -15,7 +20,7 @@ const ScoreBoard = (): JSX.Element => {
     awayTeamScore: 0
   }
 
-  const [matches, setMatches] = useState<Array<MatchState>>([])
+  const [matchList, setMatchList] = useState<Array<MatchState>>([])
 
   const [form, setForm] = useState<MatchState>(DEFAULT_FORM)
 
@@ -28,9 +33,17 @@ const ScoreBoard = (): JSX.Element => {
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    setMatches([...matches, form])
+    const newForm = {
+      ...form,
+      homeTeamScore: Number(form.homeTeamScore),
+      awayTeamScore: Number(form.awayTeamScore)
+    }
+
+    setMatchList([...matchList, newForm])
 
     setForm(DEFAULT_FORM)
+    
+    handleEndGame(newForm)
   }
 
   return (
@@ -102,6 +115,9 @@ const ScoreBoard = (): JSX.Element => {
                 <td>
                   {`${match.awayTeamName} ${Number(match.awayTeamScore)}`}
                 </td>
+                <td>
+                  <button>Update Scores</button>
+                </td>
               </tr>
             )
           })}
@@ -111,4 +127,3 @@ const ScoreBoard = (): JSX.Element => {
   )
 }
 
-export default ScoreBoard
