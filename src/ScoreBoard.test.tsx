@@ -5,7 +5,7 @@ import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, describe, it, expect, vi } from 'vitest'
 import userEvent from '@testing-library/user-event'
 
-import { ScoreBoard, MatchState } from './ScoreBoard'
+import { ScoreBoard } from './ScoreBoard'
 
 describe('<ScoreBoard />', () => {
   afterEach(cleanup)
@@ -164,98 +164,5 @@ describe('<ScoreBoard />', () => {
 
       screen.getByRole('row', { name: /Netherlands 2 Argentina 2/i })
     })
-  })
-
-  describe('Update score', () => {
-    it.skip('should render an update button', () => {
-      const mockMatches = [
-        {
-          homeTeamName: 'Team A',
-          homeTeamScore: 1,
-          awayTeamName: 'Team B',
-          awayTeamScore: 2
-        }
-      ]
-
-      render(<ScoreBoard matches={mockMatches} />)
-
-      screen.getByText(/Update Scores/i);
-    })
-
-    it.skip('Receiving by pair score; home team score and way team score updates a game score', async () => {
-    })
-  })
-})
-
-export interface Props {
-  matches?: Array<MatchState>
-}
-
-const MatchList: React.FC<Props> = ({ matches = [] }): JSX.Element => {
-  return (
-    <>
-      <h2>Matches</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Home Team</th>
-            <th>Score</th>
-            <th>Away Team</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matches.map((match, index) => {
-            return (
-              <tr key={index}>
-                <td>
-                  {match.homeTeamName}
-                </td>
-                <td>
-                  ${match.homeTeamScore}
-                </td>
-                <td>
-                  {match.awayTeamName}
-                </td>
-                <td>
-                  {Number(match.awayTeamScore)}
-                </td>
-                <td>
-                  <button>Update Scores</button>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-    </>
-  )
-}
-
-describe('<MatchList />', () => {
-  it('should render title correctly', async () => {
-    render(<MatchList />)
-
-    screen.getByText('Matches')
-  })
-
-  it('should render a set of matches when matches passed to it', async () => {
-    const mockMatches = [
-      {
-        homeTeamName: 'Team A',
-        homeTeamScore: 1,
-        awayTeamName: 'Team B',
-        awayTeamScore: 2
-      },
-      {
-        homeTeamName: 'Team Y',
-        homeTeamScore: 3,
-        awayTeamName: 'Team Z',
-        awayTeamScore: 4
-      }
-    ]
-
-    render(<MatchList matches={mockMatches} />)
   })
 })
