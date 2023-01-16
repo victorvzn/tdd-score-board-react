@@ -4,11 +4,6 @@ import { ScoreBoardForm } from './ScoreBoardForm'
 
 import { MatchList, MatchState } from './MatchList'
 
-export interface Props {
-  matches?: MatchState[]
-  handleEndGame?: (form: MatchState) => object
-}
-
 export const ScoreBoard = ({ matches }: { matches: MatchState[] }): JSX.Element => {
   const [matchList, setMatchList] = useState<MatchState[]>(matches)
 
