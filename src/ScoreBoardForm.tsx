@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { v4 as uuid } from 'uuid'
+
 import { MatchState } from './MatchList'
 
 export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) => void }): JSX.Element => {
@@ -21,8 +23,11 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault()
 
+    const id = uuid()
+
     const newMatch: MatchState = {
       ...form,
+      id,
       homeTeamScore: Number(form.homeTeamScore),
       awayTeamScore: Number(form.awayTeamScore)
     }
