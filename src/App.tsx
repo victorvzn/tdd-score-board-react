@@ -1,9 +1,9 @@
-import ScoreBoard from './ScoreBoard'
+import { ScoreBoard } from './ScoreBoard'
 
-function App () {
+function App (): JSX.Element {
   return (
     <div className='App'>
-      <ScoreBoard />
+      <ScoreBoard matches={[]} />
     </div>
   )
 }
