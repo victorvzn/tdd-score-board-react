@@ -1,49 +1,19 @@
 import React, { useState } from 'react'
 
-export interface MatchState {
-  homeTeamName: string,
-  homeTeamScore: number,
-  awayTeamName: string,
-  awayTeamScore: number
-}
+import { ScoreBoardForm } from './ScoreBoardForm'
+
+import { MatchList, MatchState } from './MatchList'
 
 export interface Props {
-  matches?: Array <MatchState>,
+  matches?: MatchState[]
   handleEndGame?: (form: MatchState) => object
 }
 
-export const ScoreBoard: React.FC<Props> = ({ matches = [], handleEndGame = () => {} }): JSX.Element => {
-  const DEFAULT_FORM = {
-    homeTeamName: '',
-    homeTeamScore: 0,
-    awayTeamName: '',
-    awayTeamScore: 0
-  }
+export const ScoreBoard = ({ matches }: { matches: MatchState[] }): JSX.Element => {
+  const [matchList, setMatchList] = useState<MatchState[]>(matches)
 
-  const [matchList, setMatchList] = useState<Array<MatchState>>([])
-
-  const [form, setForm] = useState<MatchState>(DEFAULT_FORM)
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-
-    setForm({ ...form, [name]: value })
-  }
-
-  const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
-    const newForm = {
-      ...form,
-      homeTeamScore: Number(form.homeTeamScore),
-      awayTeamScore: Number(form.awayTeamScore)
-    }
-
-    setMatchList([...matchList, newForm])
-
-    setForm(DEFAULT_FORM)
-    
-    handleEndGame(newForm)
+  const handleEndGame = (match: MatchState): void => {
+    setMatchList([...matchList, match])
   }
 
   return (
@@ -52,50 +22,9 @@ export const ScoreBoard: React.FC<Props> = ({ matches = [], handleEndGame = () =
 
       <h2>Start Game</h2>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='homeTeamName'>Home Team Name</label>
-          <input
-            type='text'
-            name='homeTeamName'
-            placeholder='Home Team Name'
-            value={form.homeTeamName}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='homeTeamScore'>Home Team Score</label>
-          <input
-            type='text'
-            name='homeTeamScore'
-            placeholder='Home Team Score'
-            value={form.homeTeamScore}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='awayTeamName'>Away Team Name</label>
-          <input
-            type='text'
-            name='awayTeamName'
-            placeholder='Away Team Name'
-            value={form.awayTeamName}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='awayTeamScore'>Away Team Score</label>
-          <input
-            type='text'
-            name='awayTeamScore'
-            placeholder='Away Team Score'
-            value={form.awayTeamScore}
-            onChange={handleChange}
-          />
-        </div>
-        <button>Finish Game</button>
-      </form>
+      <ScoreBoardForm onEndGame={handleEndGame} />
+
+      <MatchList matches={matchList} />
     </>
   )
 }
-
