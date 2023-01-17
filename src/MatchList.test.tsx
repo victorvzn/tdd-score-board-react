@@ -11,12 +11,16 @@ describe('<MatchList />', () => {
   afterEach(cleanup)
 
   it('should render title correctly', async () => {
-    render(<MatchList matches={[]} />)
+    const mockHandleSaveMatch = vi.fn()
+
+    render(<MatchList matches={[]} onSaveMatch={mockHandleSaveMatch} />)
 
     screen.getByText('Matches')
   })
 
   it('should render a set of matches when matches passed to it', async () => {
+    const mockHandleSaveMatch = vi.fn()
+
     const mockMatches = [
       {
         id: 'uuid-1',
@@ -34,10 +38,12 @@ describe('<MatchList />', () => {
       }
     ]
 
-    render(<MatchList matches={mockMatches} />)
+    render(<MatchList matches={mockMatches} onSaveMatch={mockHandleSaveMatch} />)
   })
 
   it('should render an update button', () => {
+    const mockHandleSaveMatch = vi.fn()
+
     const mockMatches = [
       {
         id: 'uuid-1',
@@ -48,13 +54,14 @@ describe('<MatchList />', () => {
       }
     ]
 
-    render(<MatchList matches={mockMatches} />)
+    render(<MatchList matches={mockMatches} onSaveMatch={mockHandleSaveMatch} />)
 
     expect(screen.getByText(/Update Scores/i)).toBeInTheDocument()
-})
+  })
 
   it('should toggle home team score, way team score inputs and a save button after update score button clicked', async () => {
     const user = userEvent.setup()
+    const mockHandleSaveMatch = vi.fn()
 
     const mockMatches = [
       {
@@ -66,7 +73,7 @@ describe('<MatchList />', () => {
       }
     ]
 
-    render(<MatchList matches={mockMatches} />)
+    render(<MatchList matches={mockMatches} onSaveMatch={mockHandleSaveMatch} />)
 
     const updateScoresButton: HTMLButtonElement = screen.getByText('Update Scores')
     // const row = screen.getByRole('row', { name: /Team P 5 Team S 3/i })
@@ -85,6 +92,7 @@ describe('<MatchList />', () => {
 
   it('should toggle home team score and way team score inputs only once after update button clicked', async () => {
     const user = userEvent.setup()
+    const mockHandleSaveMatch = vi.fn()
 
     const mockMatches = [
       {
@@ -103,7 +111,7 @@ describe('<MatchList />', () => {
       }
     ]
 
-    render(<MatchList matches={mockMatches} />)
+    render(<MatchList matches={mockMatches} onSaveMatch={mockHandleSaveMatch} />)
 
     // const updateScoresButton: HTMLButtonElement = screen.getByText('Update Scores')
     const row = screen.getByRole('row', { name: /Team X 5 Team W 3/i })
@@ -113,7 +121,6 @@ describe('<MatchList />', () => {
     expect(screen.queryByPlaceholderText('AT Score')).not.toBeInTheDocument()
 
     await user.click(updateScoresButton)
-    screen.debug()
 
     expect(screen.getByPlaceholderText('HT Score')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('AT Score')).toBeInTheDocument()
@@ -121,8 +128,9 @@ describe('<MatchList />', () => {
     expect(screen.getByText('Save Scores')).toBeInTheDocument()
   })
 
-  it('should hide home team score and way team score inputs with scores value after save button clicked', async () => {
+  it('should hide home team score and way team score inputs with score values after save button clicked', async () => {
     const user = userEvent.setup()
+    const mockHandleSaveMatch = vi.fn()
 
     const mockMatches = [
       {
@@ -141,7 +149,7 @@ describe('<MatchList />', () => {
       }
     ]
 
-    render(<MatchList matches={mockMatches} />)
+    render(<MatchList matches={mockMatches} onSaveMatch={mockHandleSaveMatch} />)
 
     // const updateScoresButton: HTMLButtonElement = screen.getByText('Update Scores')
     const row = screen.getByRole('row', { name: /Team X 5 Team W 3/i })
