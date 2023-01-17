@@ -52,3 +52,33 @@ describe('<MatchList />', () => {
 
     expect(screen.getByText(/Update Scores/i)).toBeInTheDocument()
 })
+
+  it('should toggle home team score, way team score inputs and a save button after update score button clicked', async () => {
+    const user = userEvent.setup()
+
+    const mockMatches = [
+      {
+        id: 'uuid-1',
+        homeTeamName: 'Team P',
+        homeTeamScore: 5,
+        awayTeamName: 'Team S',
+        awayTeamScore: 3
+      }
+    ]
+
+    render(<MatchList matches={mockMatches} />)
+
+    const updateScoresButton: HTMLButtonElement = screen.getByText('Update Scores')
+    // const row = screen.getByRole('row', { name: /Team P 5 Team S 3/i })
+    // const updateScoresButton = within(row).getByText('Update Scores')
+
+    expect(screen.queryByPlaceholderText('HT Score')).not.toBeInTheDocument()
+    expect(screen.queryByPlaceholderText('AT Score')).not.toBeInTheDocument()
+
+    await user.click(updateScoresButton)
+
+    expect(screen.getByPlaceholderText('HT Score')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('AT Score')).toBeInTheDocument()
+
+    expect(screen.getByText('Save Scores')).toBeInTheDocument()
+  })
