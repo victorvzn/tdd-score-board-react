@@ -1,4 +1,4 @@
-import { ScoreBoard } from './ScoreBoard'
+import { ScoreBoard } from './components/ScoreBoard'
 
 function App (): JSX.Element {
   return (
