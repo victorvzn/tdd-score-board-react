@@ -2,7 +2,7 @@
 import React from 'react'
 
 import { cleanup, render, screen } from '@testing-library/react'
-import { afterEach, describe, it, expect, vi } from 'vitest'
+import { afterEach, describe, it, expect } from 'vitest'
 import userEvent from '@testing-library/user-event'
 
 import { ScoreBoard } from './ScoreBoard'
