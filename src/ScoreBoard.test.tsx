@@ -70,6 +70,9 @@ describe('<ScoreBoard />', () => {
       screen.getByRole('row', { name: /Peru 5 Nigeria 2/i })
     })
 
+    it.skip('should disable finish game button if not "home match and away match" provide', async () => {
+      //
+    })
 
     it('should show a red message if not "home match or away match" provide', async () => {
       const user = userEvent.setup()

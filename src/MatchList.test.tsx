@@ -18,6 +18,14 @@ describe('<MatchList />', () => {
     screen.getByText('Matches')
   })
 
+  it('should show a message if no matches registered', async () => {
+    const mockHandleSaveMatch = vi.fn()
+
+    render(<MatchList matches={[]} onSaveMatch={mockHandleSaveMatch} />)
+
+    screen.getByText('No registered matches')
+  })
+
   it('should render a set of matches when matches passed to it', async () => {
     const mockHandleSaveMatch = vi.fn()
 
