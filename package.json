@@ -1,15 +1,37 @@
 {
   "name": "tdd-score-board-react",
   "private": true,
+  "description": "Football World Cup Score Board",
   "version": "0.1.0",
   "type": "module",
+  "keywords": [
+    "tdd",
+    "typescript",
+    "reactjs",
+    "vite",
+    "vitest",
+    "Testing Librart React",
+    "cypress"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/scoreboard.umd.js",
+  "module": "./dist/scoreboard.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/scoreboard.es.js",
+      "require": "./dist/scoreboard.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "test:e2e": "npx cypress open"
+    "test:e2e": "npx cypress open ScoreBoard.cy"
   },
   "dependencies": {
     "@testing-library/jest-dom": "5.16.5",
@@ -25,6 +47,7 @@
     "@vitejs/plugin-react": "3.0.0",
     "cypress": "12.3.0",
     "jsdom": "21.0.0",
+    "standard": "17.0.0",
     "ts-standard": "12.0.2",
     "typescript": "4.9.3",
     "uuid": "9.0.0",
