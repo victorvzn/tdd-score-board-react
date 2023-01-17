@@ -12,14 +12,11 @@ export const MatchList = ({ matches }: { matches: MatchState[] }): JSX.Element =
   const [selectedMatch, setSelectedMatch] = useState<MatchState>()
 
   const handleUpdateScores = (match: MatchState): void => {
-    if (selectedMatch === undefined) {
-      setSelectedMatch(match)
-      return
-    }
-    setSelectedMatch(undefined)
+    setSelectedMatch(match)
   }
 
   const handleSaveScores = (match: MatchState): void => {
+    setSelectedMatch(undefined)
   }
 
   return (
