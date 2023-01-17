@@ -11,6 +11,15 @@ export const ScoreBoard = ({ matches }: { matches: MatchState[] }): JSX.Element 
     setMatchList([...matchList, match])
   }
 
+  const handleUpdateMatch = (match: MatchState): void => {
+    const updatedMatches = matchList.map(matchOrigin => {
+      if (matchOrigin.id === match.id) return match
+
+      return matchOrigin
+    })
+    setMatchList(updatedMatches)
+  }
+
   return (
     <>
       <h1>Score Board</h1>
@@ -19,7 +28,7 @@ export const ScoreBoard = ({ matches }: { matches: MatchState[] }): JSX.Element 
 
       <ScoreBoardForm onEndGame={handleEndGame} />
 
-      <MatchList matches={matchList} />
+      <MatchList matches={matchList} onSaveMatch={handleUpdateMatch} />
     </>
   )
 }

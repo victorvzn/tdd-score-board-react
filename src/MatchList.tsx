@@ -8,15 +8,47 @@ export interface MatchState {
   awayTeamScore: number
 }
 
-export const MatchList = ({ matches }: { matches: MatchState[] }): JSX.Element => {
+export const MatchList = ({
+  matches,
+  onSaveMatch
+}: {
+  matches: MatchState[]
+  onSaveMatch: (match: MatchState) => void
+}): JSX.Element => {
+  const DEFAULT_INPUTS = {
+    homeTeamScore: 0,
+    awayTeamScore: 0
+  }
+
   const [selectedMatch, setSelectedMatch] = useState<MatchState>()
+  const [inputValues, setInputValues] = useState<MatchState>(DEFAULT_INPUTS)
 
   const handleUpdateScores = (match: MatchState): void => {
     setSelectedMatch(match)
+
+    setInputValues({
+      homeTeamScore: match.homeTeamScore,
+      awayTeamScore: match.awayTeamScore
+    })
   }
 
   const handleSaveScores = (match: MatchState): void => {
     setSelectedMatch(undefined)
+
+    const updatedMatch: MatchState = {
+      ...match,
+      homeTeamScore: Number(inputValues.homeTeamScore),
+      awayTeamScore: Number(inputValues.awayTeamScore)
+    }
+    console.log(updatedMatch)
+
+    onSaveMatch(updatedMatch)
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = event.target
+
+    setInputValues({ ...inputValues, [name]: value })
   }
 
   return (
@@ -46,11 +78,11 @@ export const MatchList = ({ matches }: { matches: MatchState[] }): JSX.Element =
                   {selectedMatch?.id !== match.id
                     ? <span>{match.homeTeamScore}</span>
                     : <input
-                        readOnly
                         type='text'
-                        name='updateHTScore'
+                        name='homeTeamScore'
                         placeholder='HT Score'
-                        value={match.homeTeamScore}
+                        value={inputValues.homeTeamScore}
+                        onChange={handleChange}
                       />}
                 </td>
                 <td>
@@ -60,11 +92,11 @@ export const MatchList = ({ matches }: { matches: MatchState[] }): JSX.Element =
                   {selectedMatch?.id !== match.id
                     ? <span>{match.awayTeamScore}</span>
                     : <input
-                        readOnly
                         type='text'
-                        name='updateATScore'
+                        name='awayTeamScore'
                         placeholder='AT Score'
-                        value={match.awayTeamScore}
+                        value={inputValues.awayTeamScore}
+                        onChange={handleChange}
                       />}
                 </td>
                 <td>
