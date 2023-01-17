@@ -66,46 +66,49 @@ export const MatchList = ({
           </tr>
         </thead>
         <tbody>
-          {matches.map((match, index) => {
-            return (
-              <tr key={match.id}>
-                <td>{index + 1}</td>
-                <td>
-                  {match.homeTeamName}
-                </td>
-                <td>
-                  {selectedMatch?.id !== match.id
-                    ? <span>{match.homeTeamScore}</span>
-                    : <input
-                        type='number'
-                        name='homeTeamScore'
-                        placeholder='HT Score'
-                        value={inputValues.homeTeamScore}
-                        onChange={handleChange}
-                      />}
-                </td>
-                <td>
-                  {match.awayTeamName}
-                </td>
-                <td>
-                  {selectedMatch?.id !== match.id
-                    ? <span>{match.awayTeamScore}</span>
-                    : <input
-                        type='number'
-                        name='awayTeamScore'
-                        placeholder='AT Score'
-                        value={inputValues.awayTeamScore}
-                        onChange={handleChange}
-                      />}
-                </td>
-                <td>
-                  {selectedMatch?.id !== match.id
-                    ? <button onClick={() => handleUpdateScores(match)}>Update Scores</button>
-                    : <button onClick={() => handleSaveScores(match)}>Save Scores</button>}
-                </td>
-              </tr>
-            )
-          })}
+          {matches.length === 0 && <tr><td className='text-center' colSpan={6}>No registered matches</td></tr>}
+
+          {matches.length > 0 &&
+            matches.map((match, index) => {
+              return (
+                <tr key={match.id}>
+                  <td>{index + 1}</td>
+                  <td>
+                    {match.homeTeamName}
+                  </td>
+                  <td>
+                    {selectedMatch?.id !== match.id
+                      ? <span>{match.homeTeamScore}</span>
+                      : <input
+                          type='number'
+                          name='homeTeamScore'
+                          placeholder='HT Score'
+                          value={inputValues.homeTeamScore}
+                          onChange={handleChange}
+                        />}
+                  </td>
+                  <td>
+                    {match.awayTeamName}
+                  </td>
+                  <td>
+                    {selectedMatch?.id !== match.id
+                      ? <span>{match.awayTeamScore}</span>
+                      : <input
+                          type='number'
+                          name='awayTeamScore'
+                          placeholder='AT Score'
+                          value={inputValues.awayTeamScore}
+                          onChange={handleChange}
+                        />}
+                  </td>
+                  <td>
+                    {selectedMatch?.id !== match.id
+                      ? <button onClick={() => handleUpdateScores(match)}>Update Scores</button>
+                      : <button onClick={() => handleSaveScores(match)}>Save Scores</button>}
+                  </td>
+                </tr>
+              )
+            })}
         </tbody>
       </table>
     </>

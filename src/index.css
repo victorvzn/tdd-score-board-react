@@ -10,3 +10,7 @@ table, th, td {
 .is-required {
   color: #FF0000;
 }
+
+.text-center {
+  text-align: center;
+}
