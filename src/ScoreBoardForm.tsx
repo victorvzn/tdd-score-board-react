@@ -54,50 +54,54 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor='homeTeamName'>Home Team Name</label>
-        <input
-          type='text'
-          name='homeTeamName'
-          placeholder='Home Team Name'
-          value={form.homeTeamName}
-          onChange={handleChange}
-        />
-        {errorHomeTeamName !== '' && <div className='is-required'>{errorHomeTeamName}</div>}
-      </div>
-      <div>
-        <label htmlFor='homeTeamScore'>Home Team Score</label>
-        <input
-          type='number'
-          name='homeTeamScore'
-          placeholder='Home Team Score'
-          value={form.homeTeamScore}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor='awayTeamName'>Away Team Name</label>
-        <input
-          type='text'
-          name='awayTeamName'
-          placeholder='Away Team Name'
-          value={form.awayTeamName}
-          onChange={handleChange}
-        />
-        {errorAwayTeamName !== '' && <div className='is-required'>{errorAwayTeamName}</div>}
-      </div>
-      <div>
-        <label htmlFor='awayTeamScore'>Away Team Score</label>
-        <input
-          type='number'
-          name='awayTeamScore'
-          placeholder='Away Team Score'
-          value={form.awayTeamScore}
-          onChange={handleChange}
-        />
-      </div>
-      <button>Finish Game</button>
-    </form>
+    <>
+      <h2>Start Game</h2>
+
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor='homeTeamName'>Home Team Name</label>
+          <input
+            type='text'
+            name='homeTeamName'
+            placeholder='Home Team Name'
+            value={form.homeTeamName}
+            onChange={handleChange}
+          />
+          {errorHomeTeamName !== '' && <div className='is-required'>{errorHomeTeamName}</div>}
+        </div>
+        <div>
+          <label htmlFor='homeTeamScore'>Home Team Score</label>
+          <input
+            type='number'
+            name='homeTeamScore'
+            placeholder='Home Team Score'
+            value={form.homeTeamScore}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor='awayTeamName'>Away Team Name</label>
+          <input
+            type='text'
+            name='awayTeamName'
+            placeholder='Away Team Name'
+            value={form.awayTeamName}
+            onChange={handleChange}
+          />
+          {errorAwayTeamName !== '' && <div className='is-required'>{errorAwayTeamName}</div>}
+        </div>
+        <div>
+          <label htmlFor='awayTeamScore'>Away Team Score</label>
+          <input
+            type='number'
+            name='awayTeamScore'
+            placeholder='Away Team Score'
+            value={form.awayTeamScore}
+            onChange={handleChange}
+          />
+        </div>
+        <button>Finish Game</button>
+      </form>
+    </>
   )
 }

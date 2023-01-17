@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { ScoreBoardForm } from './ScoreBoardForm'
 
 import { MatchList, MatchState } from './MatchList'
+import { SummaryList } from './SummaryList'
 
 export const ScoreBoard = ({ matches }: { matches: MatchState[] }): JSX.Element => {
   const [matchList, setMatchList] = useState<MatchState[]>(matches)
@@ -24,11 +25,11 @@ export const ScoreBoard = ({ matches }: { matches: MatchState[] }): JSX.Element 
     <>
       <h1>Score Board</h1>
 
-      <h2>Start Game</h2>
-
       <ScoreBoardForm onEndGame={handleEndGame} />
 
       <MatchList matches={matchList} onSaveMatch={handleUpdateMatch} />
+
+      <SummaryList matches={matchList} />
     </>
   )
 }
