@@ -40,7 +40,6 @@ export const MatchList = ({
       homeTeamScore: Number(inputValues.homeTeamScore),
       awayTeamScore: Number(inputValues.awayTeamScore)
     }
-    console.log(updatedMatch)
 
     onSaveMatch(updatedMatch)
   }
@@ -78,7 +77,7 @@ export const MatchList = ({
                   {selectedMatch?.id !== match.id
                     ? <span>{match.homeTeamScore}</span>
                     : <input
-                        type='text'
+                        type='number'
                         name='homeTeamScore'
                         placeholder='HT Score'
                         value={inputValues.homeTeamScore}
@@ -92,7 +91,7 @@ export const MatchList = ({
                   {selectedMatch?.id !== match.id
                     ? <span>{match.awayTeamScore}</span>
                     : <input
-                        type='text'
+                        type='number'
                         name='awayTeamScore'
                         placeholder='AT Score'
                         value={inputValues.awayTeamScore}
