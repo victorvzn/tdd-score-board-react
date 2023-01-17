@@ -52,7 +52,7 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
       <div>
         <label htmlFor='homeTeamScore'>Home Team Score</label>
         <input
-          type='text'
+          type='number'
           name='homeTeamScore'
           placeholder='Home Team Score'
           value={form.homeTeamScore}
@@ -72,7 +72,7 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
       <div>
         <label htmlFor='awayTeamScore'>Away Team Score</label>
         <input
-          type='text'
+          type='number'
           name='awayTeamScore'
           placeholder='Away Team Score'
           value={form.awayTeamScore}
