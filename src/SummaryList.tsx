@@ -1,6 +1,6 @@
 import { MatchState } from './MatchList'
 
-const reverse = ({ matches }: { matches: MatchState[] }): MatchState[] => matches.slice().reverse()
+import { reverse } from './utils/arrays'
 
 export const SummaryList = ({ matches }: { matches: MatchState[] }): JSX.Element => {
   const reversedMatches = reverse({ matches })

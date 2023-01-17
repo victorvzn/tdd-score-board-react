@@ -7,7 +7,7 @@ import { afterEach, describe, it, expect } from 'vitest'
 import { SummaryList } from './SummaryList'
 import { MatchState } from './MatchList'
 
-const reverse = ({ matches }: { matches: MatchState[] }): MatchState[] => matches.slice().reverse()
+import { reverse } from './utils/arrays'
 
 describe('<SummaryList />', () => {
   afterEach(cleanup)
