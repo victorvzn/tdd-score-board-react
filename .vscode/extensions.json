@@ -3,6 +3,7 @@
     "usernamehw.errorlens",
     "dsznajder.es7-react-js-snippets",
     "standard.vscode-standard",
-    "pflannery.vscode-versionlens"
+    "pflannery.vscode-versionlens",
+    "dbaeumer.vscode-eslint"
   ]
 }
