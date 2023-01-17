@@ -14,14 +14,30 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
 
   const [form, setForm] = useState<MatchState>(DEFAULT_FORM)
 
+  const [errorHomeTeamName, setErrorHomeTeamName] = useState('')
+  const [errorAwayTeamName, setErrorAwayTeamName] = useState('')
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target
+
+    setErrorHomeTeamName('')
+    setErrorAwayTeamName('')
 
     setForm({ ...form, [name]: value })
   }
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault()
+
+    if (form?.homeTeamName === '') {
+      setErrorHomeTeamName('Home team name is required')
+    }
+
+    if (form?.awayTeamName === '') {
+      setErrorAwayTeamName('Away team name is required')
+    }
+
+    if (form?.homeTeamName === '' || form?.awayTeamName === '') return
 
     const id = uuid()
 
@@ -48,6 +64,7 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
           value={form.homeTeamName}
           onChange={handleChange}
         />
+        {errorHomeTeamName !== '' && <div className='is-required'>{errorHomeTeamName}</div>}
       </div>
       <div>
         <label htmlFor='homeTeamScore'>Home Team Score</label>
@@ -68,6 +85,7 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
           value={form.awayTeamName}
           onChange={handleChange}
         />
+        {errorAwayTeamName !== '' && <div className='is-required'>{errorAwayTeamName}</div>}
       </div>
       <div>
         <label htmlFor='awayTeamScore'>Away Team Score</label>

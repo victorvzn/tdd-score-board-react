@@ -6,3 +6,7 @@ table, th, td {
   border: 1px solid #333;
   padding: .5rem;
 }
+
+.is-required {
+  color: #FF0000;
+}
