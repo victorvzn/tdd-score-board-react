@@ -70,6 +70,30 @@ describe('<ScoreBoard />', () => {
       screen.getByRole('row', { name: /Peru 5 Nigeria 2/i })
     })
 
+
+    it('should show a red message if not "home match or away match" provide', async () => {
+      const user = userEvent.setup()
+
+      render(<ScoreBoard matches={[]} />)
+
+      const homeTeamName: HTMLInputElement = screen.getByPlaceholderText('Home Team Name')
+      const awayTeamName: HTMLInputElement = screen.getByPlaceholderText('Away Team Name')
+
+      const finishGameButton: HTMLButtonElement = screen.getByText('Finish Game')
+
+      await user.type(homeTeamName, 'TEAM 1')
+      await user.clear(awayTeamName)
+      await user.click(finishGameButton)
+
+      expect(screen.getByText('Away team name is required')).toBeInTheDocument()
+
+      await user.clear(homeTeamName)
+      await user.type(awayTeamName, 'TEAM 2')
+      await user.click(finishGameButton)
+
+      expect(screen.getByText('Home team name is required')).toBeInTheDocument()
+    })
+
     it('should remove a match from the scoreboard', async () => {
       const user = userEvent.setup()
 
