@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import BaseTitleWithIcon from './shared/BaseTitleWithIcon'
+
 export interface MatchState {
   id?: string
   homeTeamName?: string
@@ -52,7 +54,9 @@ export const MatchList = ({
 
   return (
     <>
-      <h2>Matches</h2>
+      <BaseTitleWithIcon title='Matches'>
+        <span>⚽</span>
+      </BaseTitleWithIcon>
 
       <table>
         <thead>

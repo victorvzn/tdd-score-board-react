@@ -4,6 +4,8 @@ import { v4 as uuid } from 'uuid'
 
 import { MatchState } from './MatchList'
 
+import BaseTitleWithIcon from './shared/BaseTitleWithIcon'
+
 export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) => void }): JSX.Element => {
   const DEFAULT_FORM = {
     homeTeamName: '',
@@ -55,7 +57,9 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
 
   return (
     <>
-      <h2>Start Game</h2>
+      <BaseTitleWithIcon title='Start Game'>
+        <span>⚽</span>
+      </BaseTitleWithIcon>
 
       <form onSubmit={handleSubmit}>
         <div>
