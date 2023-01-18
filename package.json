@@ -4,6 +4,7 @@
   "description": "Football World Cup Score Board",
   "version": "0.1.0",
   "type": "module",
+  "repository": "victorvzn/tdd-score-board-react",
   "keywords": [
     "tdd",
     "typescript",
@@ -17,12 +18,12 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/scoreboard.umd.js",
-  "module": "./dist/scoreboard.es.js",
+  "main": "./dist/tdd-score-board-react.umd.js",
+  "module": "./dist/tdd-score-board-react.es.js",
   "exports": {
     ".": {
-      "import": "./dist/scoreboard.es.js",
-      "require": "./dist/scoreboard.umd.js"
+      "import": "./dist/tdd-score-board-react.es.js",
+      "require": "./dist/tdd-score-board-react.umd.js"
     }
   },
   "scripts": {
@@ -31,13 +32,17 @@
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "test:e2e": "npx cypress open ScoreBoard.cy"
+    "test:e2e": "npx cypress open"
   },
   "dependencies": {
     "@testing-library/jest-dom": "5.16.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
+  "license": "MIT",
+  "engines": {
+		"node": ">=18.12.1"
+	},
   "devDependencies": {
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
