@@ -152,4 +152,4 @@ Improvements in a project are important and this project is no exception since i
 
 ### Maintainers
 
-* Victor Villazón - [victorvillazon.com](victorvillazon.com)
+* Victor Villazón - [victorvillazon.com](https://victorvillazon.com)
