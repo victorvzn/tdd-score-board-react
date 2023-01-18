@@ -7,6 +7,8 @@ import { SummaryList } from './SummaryList'
 
 import { useMatches } from '../hooks/useMatches'
 
+import '../index.css'
+
 export const ScoreBoard = ({ matches }: { matches: MatchState[] }): JSX.Element => {
   const { matchList, handleEndGame, handleUpdateMatch } = useMatches(matches)
 
