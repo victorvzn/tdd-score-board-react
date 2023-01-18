@@ -1,3 +1,5 @@
+<p align="center">🟥🟩🟦 ⚽</p>
+
 # Football World Cup Score Board - Challenge
 
 <p align="center">
