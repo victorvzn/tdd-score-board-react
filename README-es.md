@@ -26,16 +26,25 @@ npm install tdd-score-board-react
 ### Usage
 
 ```
-import ScoreBoard from 'tdd-score-board-react'
-
-const App = () => {
-    return (
-        <ScoreBoard  />
-    )
-}
+npm create vite@latest
 ```
 
-### Contributing - Installing and running
+```
+// app.js
+
+import { ScoreBoard } from 'tdd-score-board-react'
+
+function App() {
+  return (
+    <ScoreBoard matches={[]} />
+  )
+}
+
+export default App
+```
+### Contributing
+
+**Installing and running**
 
 ```
 npm install
@@ -45,13 +54,13 @@ npm run dev
 open http://localhost:5173/
 ```
 
-### Contributing - How to pass unit tests?
+**How to pass unit tests?**
 
 ```
 npm test
 ```
 
-### Contributing - How to pass integration tests?
+**How to pass integration tests?**
 
 ```
 npm run dev
@@ -85,8 +94,6 @@ Provide the implementation of the Football World Cup Score Board as a **simple l
 
 ### La Solución
 
-
-
 Disfruté mucho el proceso de desarrollo de este reto ya que fue desafiante, sobretodo al enfocarme en la calidad y mejores prácticas con lo que pude llegar a una solución estable y lista para escalar.
 
 Para resolver este reto analicé el coding exercise, posteriormente pude estructurar una solución que se ajuste al problema planteado. Este problema lo he dividido en tres partes:
@@ -100,7 +107,7 @@ Para resolver este reto analicé el coding exercise, posteriormente pude estruct
     * **Vitest:** es el Test Runner que elegí por su rapidez en ejecutar los tests y por que se integra muy bien con vite.
     * **testing-library/react:** Para complementar a vitest añadí esta herramienta que me permite consultar e interactuar con el dom dentro de mis tests cases.
     * **Typescript:** Usé typescript por que en tiempo de compilación pude prevenir potenciales errores y mostrarlos fácilmente, además me indica en todo momento lo que espera recibir cada función o variable por su tipado estático.
-    * **ESLint + Standard:** Estas dos herramientas las uso en conjunto por que me permiten encontrar errores y formatear mi código para seguir un mismo estilo. Pude usar prettier, el cual uso en otros proyectos, pero me gustan las cosas simples y standard me da dos por uno. [Ver extensiones recomendadas]()
+    * **ESLint + Standard:** Estas dos herramientas las uso en conjunto por que me permiten encontrar errores y formatear mi código para seguir un mismo estilo. Pude usar prettier, el cual uso en otros proyectos, pero me gustan las cosas simples y standard me da dos por uno. [Ver extensiones recomendadas](https://github.com/victorvzn/tdd-score-board-react/blob/main/.vscode/extensions.json)
     * **Cypress:** Esta herramiento me ayudó a emular un flujo de usuario especifico sobre el Score Board, permitiendome integrar los tests y saber si la aplicación en general cumple los requerimientos.
     * **Visual Studio Code:** Este es el editor que uso por defecto y con sus extensiones agilizan mi trabajo y lo hacen más productivo. Otros editores que uso en mi día a día son VIM o Sublime text.
     * **Commit messages:** me permití usar la siguiente [especificación](https://www.conventionalcommits.org/en/v1.0.0/#summary) debido a que considero que escribir commit claros y entendibles es importante para que otras personas que participen en este proyecto lo entiendan. En esta guía se describen una serie de reglas sobre como redactar buenos commits y los tipos que use principalmente son: test:, chore: y refactor:.
