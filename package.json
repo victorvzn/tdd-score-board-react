@@ -1,8 +1,8 @@
 {
   "name": "tdd-score-board-react",
-  "private": true,
+  "private": false,
   "description": "Football World Cup Score Board",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "repository": "victorvzn/tdd-score-board-react",
   "keywords": [
@@ -18,12 +18,12 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/tdd-score-board-react.umd.js",
-  "module": "./dist/tdd-score-board-react.es.js",
+  "main": "./dist/scoreboard.umd.js",
+  "module": "./dist/scoreboard.es.js",
   "exports": {
     ".": {
-      "import": "./dist/tdd-score-board-react.es.js",
-      "require": "./dist/tdd-score-board-react.umd.js"
+      "import": "./dist/scoreboard.es.js",
+      "require": "./dist/scoreboard.umd.js"
     }
   },
   "scripts": {
