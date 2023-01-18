@@ -116,7 +116,7 @@ To overcome this challenge, I analyzed the coding exercise, and later, I was up 
 
 3. I wrote the first tests using TDD:
 
-    a. **Test case:** Each test was written solving one case at a time, for example, the first test was; it should render ScoreBoard component, to test that the component should render correctly.
+    a. **Test case:** Each test was written solving one case at a time, for example, the first test was; `it should render ScoreBoard component`, to test that the component should render correctly.
     
     b. **Failure:** Once the test was defined, it was left in a failure state so that it can be resolved and passed.
     
