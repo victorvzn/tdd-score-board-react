@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import BaseTitleWithIcon from './shared/BaseTitleWithIcon'
+import { YellowButton } from './shared/BaseButton'
 
 export interface MatchState {
   id?: string
@@ -107,8 +108,8 @@ export const MatchList = ({
                   </td>
                   <td>
                     {selectedMatch?.id !== match.id
-                      ? <button onClick={() => handleUpdateScores(match)}>Update Scores</button>
-                      : <button onClick={() => handleSaveScores(match)}>Save Scores</button>}
+                      ? <YellowButton size='small' onClick={() => handleUpdateScores(match)}><span>Update Scores</span></YellowButton>
+                      : <YellowButton size='small' onClick={() => handleSaveScores(match)}><span>Save Scores</span></YellowButton>}
                   </td>
                 </tr>
               )

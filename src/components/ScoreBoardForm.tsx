@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid'
 import { MatchState } from './MatchList'
 
 import BaseTitleWithIcon from './shared/BaseTitleWithIcon'
+import { BaseButton } from './shared/BaseButton'
 
 export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) => void }): JSX.Element => {
   const DEFAULT_FORM = {
@@ -104,7 +105,10 @@ export const ScoreBoardForm = ({ onEndGame }: { onEndGame: (match: MatchState) =
             onChange={handleChange}
           />
         </div>
-        <button>Finish Game</button>
+
+        <BaseButton>
+          <span>Finish Game</span>
+        </BaseButton>
       </form>
     </>
   )
