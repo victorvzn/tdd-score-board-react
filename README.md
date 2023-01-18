@@ -116,9 +116,11 @@ To overcome this challenge, I analyzed the coding exercise, and later, I was up 
 
 3. I wrote the first tests using TDD:
 
-    a. Test case: Each test was written solving one case at a time, for example, the first test was; it should render ScoreBoard component, to test that the component should render correctly.
-    b. Failure: Once the test was defined, it was left in a failure state so that it can be resolved and passed.
-    c. Refactor: After solving each case, if the moment required it, it improved the code with the purpose of making it readable, easy to follow, well organized, and above all, clean. All this while the tests continued to passing.
+    a. **Test case:** Each test was written solving one case at a time, for example, the first test was; it should render ScoreBoard component, to test that the component should render correctly.
+    
+    b. **Failure:** Once the test was defined, it was left in a failure state so that it can be resolved and passed.
+    
+    c. **Refactor:** After solving each case, if the moment required it, it improved the code with the purpose of making it readable, easy to follow, well organized, and above all, clean. All this while the tests continued to passing.
     d. Subsequently, this cycle was restarted by creating another test case.
 
 Thanks to this way of working,  I got a good project architecture, code design, as well as a UI with a minimum amount of CSS. The structure of the project, and the components, were improved in each refactoring; managing to separate the components that were beginning to get bigger. I decided not to use a CSS framework, as it added unnecessary weight and complexity. Each part of this project is designed to provide the best experience to new members of the project who will maintain it in the future.
@@ -136,9 +138,9 @@ This app has been tested on the Chrome browser.
 
 Improvements in a project are important and this project is no exception since it is made as a MVP and can continue to grow by adding the following:
 
-    * I would add Continuous Integration using GitHub actions or another integration tool, so that way we could publish the library automatically, and run the tests, linters, and formatters automatically.
-    * I would add multi-language handling with i18n libraries.
-    * It would improve support for multiple browsers and adaptability to mobile devices.
+  * I would add Continuous Integration using GitHub actions or another integration tool, so that way we could publish the library automatically, and run the tests, linters, and formatters automatically.
+  * I would add multi-language handling with i18n libraries.
+  * It would improve support for multiple browsers and adaptability to mobile devices.
 
 ### Resources
 
