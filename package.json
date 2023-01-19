@@ -2,7 +2,7 @@
   "name": "tdd-score-board-react",
   "private": false,
   "description": "Football World Cup Score Board",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "repository": "victorvzn/tdd-score-board-react",
   "keywords": [
