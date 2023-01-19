@@ -4,7 +4,8 @@
   <a href="#the-challenge">The challenge</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#la-resolución">La resolución</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#mejoras">Mejoras</a>
+  <a href="#mejoras">Mejoras</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/victorvzn/tdd-score-board-react">Versión en Inglés</a>
 </p>
 
 New Live Football World Cup Score Board that shows matches and scores.

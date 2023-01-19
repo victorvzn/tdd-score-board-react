@@ -6,7 +6,8 @@
   <a href="#the-challenge">The challenge</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#the-solution">The Solution</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#improvements">Improvements</a>
+  <a href="#improvements">Improvements</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/victorvzn/tdd-score-board-react/blob/main/README-es.md">Spanish versión</a>
 </p>
 
 New Live Football World Cup Score Board that shows matches and scores.
@@ -101,13 +102,18 @@ I really enjoyed the development process of this challenge as it was challenging
 For some time now I have applied good practices in my projects and within these the SOLID principles that I already applied without knowing them before. For example, in this project, I have used good practices as follows
 
 * **Keep it simple,** this principle is applied while trying to solve the challenge since TDD suggests that we solve each case in the simplest possible way, to later refactor and optimize in later steps.
-* **Clean Code,** I have tried to name variables, functions, and components in the best way, I have used functional programming, I have created modules in each refactor, object destructuring, pure functions, and error handling.
+* **Clean Code,** I have tried to name variables, functions, and components in the best way, I have used functional programming, I have created modules in each refactor, object destructuring, [pure functions](https://github.com/victorvzn/tdd-score-board-react/blob/main/src/utils/arrays.ts), and error handling.
 * **About SOLID Principles:** 
-  a. **Single responsibility:** In a refactor I separated the components into their modules, and I split the match-saving logic into custom hooks to hold the in-memory listing for all components and perform operations.
-  b. **Open-Closed:** I created the component `<BaseTitle />` which is open to extension but not modification with which I can create other components like BaseTitleWithIcon that print a title but with an icon next to it.
-  c. **Liskov substitution:** What you raised with the BaseButton and YellowButton components, these components are useful for different cases but if you use the Yellow component instead of BaseButton the functionality is not broken because they use the same props object with each other.
-  d. **Interface segregation:** I take this principle into account since no component of this application receives fields that it will not use. Example: The `<MatchList />` component receives only two parameters called 'matches' and 'onSaveMatch'.
-  e. **Dependency inversion:**  In this case, the 'onEndGame' callback method no longer depends on the `<ScoreBoardForm />` component but is passed as a parameter and its logic has been abstracted so that its parent component `<ScoreBoard />` controls it and modifies the global state from 'matches'.
+
+  a. **Single responsibility:** I separated the components into their modules, and I split the match-saving logic into custom hooks to hold the in-memory listing for all components and perform operations.
+
+  b. **Open-Closed:** I created the component [`<BaseTitle />`](https://github.com/victorvzn/tdd-score-board-react/blob/main/src/components/shared/BaseTitle.tsx) which is open to extension but not modification with which I can create other components like [`<BaseTitleWithIcon />`](https://github.com/victorvzn/tdd-score-board-react/blob/main/src/components/shared/BaseTitleWithIcon.tsx) that print a title but with an icon next to it.
+
+  c. **Liskov substitution:** What you raised with the [`<BaseButton />`](https://github.com/victorvzn/tdd-score-board-react/blob/main/src/components/shared/BaseButton.tsx) and [`<YellowButton />`](https://github.com/victorvzn/tdd-score-board-react/blob/main/src/components/shared/BaseButton.tsx) components, these components are useful for different cases but if you use the Yellow component instead of BaseButton the functionality is not broken because they use the same props object with each other.
+
+  d. **Interface segregation:** I take this principle into account since no component of this application receives fields that it will not use. Example: The [`<MatchList />`](https://github.com/victorvzn/tdd-score-board-react/blob/main/src/components/MatchList.tsx) component receives only two parameters called `matches` and `onSaveMatch`.
+
+  e. **Dependency inversion:**  In this case, the 'onEndGame' callback method no longer depends on the [`<ScoreBoardForm />`](https://github.com/victorvzn/tdd-score-board-react/blob/main/src/components/ScoreBoardForm.tsx) component but is passed as a parameter and its logic has been abstracted so that its parent component [`<ScoreBoard />`](https://github.com/victorvzn/tdd-score-board-react/blob/main/src/components/ScoreBoard.tsx) controls it and modifies the global state from `matches`.
 
 * **Edges cases:** I've added new cases that weren't in the original requirements, like validating input data if fields are numeric or empty, as well as displaying messages when the match list and summary list have no fields, added a match list that It allows me to update each match.
 
@@ -160,8 +166,11 @@ Improvements in a project are important and this project is no exception since i
 * [State Of JS 2022 - Front-end Frameworks and libraries](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/)
 * Simplify Testing with React Testing Library, Scottie Crump, Packt Publishing 2021
 * Clean Code in Javascript, James Padolsey, Packt Publishing 2020
-* [I Code It - Juntao Qiu (Youtube channel)](https://www.youtube.com/@icodeit.juntao)
-* [Midudev - Miguel Duran (Youtube Channel)](https://www.youtube.com/@midudev)
+* [Applying SOLID principles in React, Konstantin Lebedev, July 2022, blog](https://konstantinlebedev.com/solid-in-react/)
+* [Publishing a React component to npm using Vite, Tom Southall, February 2022](https://tomsouthall.com/blog/publishing-react-component-using-vite)
+* [[Maintainable React] Test-Driven Development with React (Part 1), Juntao Qiu, September 2022, Youtube channel](https://www.youtube.com/watch?v=V-pwM3eIcbo&t=1s)
+* [Curso de Test Driven Development desde Cero con JavaScript, React y Vitest, Miguel A. Duran, July 2022, Youtube Channel](https://www.youtube.com/watch?v=_t9l2TwGioc&t=1874s)
+* [Principios SOLID en React.js (Buenas prácticas) con ejemplos prácticos, Miguel A. Duran, September 2022, Youtube Channel](https://www.youtube.com/watch?v=jKdt-BnTTR0)
 
 ### Maintainers
 
