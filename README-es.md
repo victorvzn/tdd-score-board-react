@@ -96,6 +96,20 @@ Provide the implementation of the Football World Cup Score Board as a **simple l
 
 Disfruté mucho el proceso de desarrollo de este reto ya que fue desafiante, sobretodo al enfocarme en la calidad y mejores prácticas con lo que pude llegar a una solución estable y lista para escalar.
 
+Desde hace algún tiempo aplico buenas prácticas en mis proyectos y dentro de estos los principios SOLID que sin conocerlas antes ya las aplicaba. Por ejemplo en este proyecto he usado buenas prácticas de la siguiente manera:
+
+* **Keep it simple,** este principio lo aplique mientras intentaba resolver el reto ya que TDD nos sugiere que resuelvan cada caso de la forma más simple posible, para posteriormente refactorizar y optimizar en pasos posteriores.
+* **Clean Code,** he tratado de nombrar de la mejor forma variables, funciones, componentes, he usado programación funcional, he creado módulos en cada refactor, destructuring de objetos, funciones puras, manejo de errores.
+* **Sobre los SOLID Principles:** 
+  a. **Single responsibility:** en un refactor separé los componentes en sus propios módulos, separé la lógica del guardado de matches en un custom hooks para mantener el listado en memoria para todos los componentes y realizar operaciones. 
+  b. **Open-Closed:** Creé el componente BaseTitle que está abierto a extensión pero no a modificación con el que puedo crear otro componentes como BaseTitleWithIcon que impriman un titulo pero con un icono a su lado.
+  c. **Liskov substitution:** Lo he planteado con el componente BaseButton y YellowButton estos componentes son útiles para distintos casos pero si utilizo el componente Yellow en lugar de BaseButton la funcionalidad no se rompe por que usan entre sí el mismo objeto de props.
+  d. **Interface segregation:** Este principio lo tomo en cuenta muy a menudo ya que ningún componente en esta applición recibe campos que no van a usar. Ejemplo: el componente `<MatchList />` recibe solo dos parámetros nombrados 'matches' y 'onSaveMatch'.
+  e. **Dependency inversion:**  En este caso el callback method 'onEndGame' ya no depende del componente `<ScoreBoardForm />` sino que se pasa como parámetro y su lógica ha sido abstraida para que su componente padre `<ScoreBoard />` lo controle y modifique el estado global de 'matches'.
+
+* **Edges cases:** he añadido nuevos casos que no estaban en los requerimientos original como, validar la data de entrada si los campos son numericos o estan vacíos, además de mostrar mensajes cuando la lista de matches y la lista de resumen no tiene campos, agregué una lista de matches que me permita actualizar cada match.
+
+
 Para resolver este reto analicé el coding exercise, posteriormente pude estructurar una solución que se ajuste al problema planteado. Este problema lo he dividido en tres partes:
 
 1. Analicé el coding exercise de los que salieron los test cases principales.  [Ver sección Challenge](#the-challenge).

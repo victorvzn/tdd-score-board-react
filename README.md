@@ -98,6 +98,19 @@ Provide the implementation of the Football World Cup Score Board as a **simple l
 
 I really enjoyed the development process of this challenge as it was challenging especially as I focused on quality and best practices with which I was able to arrive at a stable and scalable solution.
 
+For some time now I have applied good practices in my projects and within these the SOLID principles that I already applied without knowing them before. For example, in this project, I have used good practices as follows
+
+* **Keep it simple,** this principle is applied while trying to solve the challenge since TDD suggests that we solve each case in the simplest possible way, to later refactor and optimize in later steps.
+* **Clean Code,** I have tried to name variables, functions, and components in the best way, I have used functional programming, I have created modules in each refactor, object destructuring, pure functions, and error handling.
+* **About SOLID Principles:** 
+  a. **Single responsibility:** In a refactor I separated the components into their modules, and I split the match-saving logic into custom hooks to hold the in-memory listing for all components and perform operations.
+  b. **Open-Closed:** I created the component `<BaseTitle />` which is open to extension but not modification with which I can create other components like BaseTitleWithIcon that print a title but with an icon next to it.
+  c. **Liskov substitution:** What you raised with the BaseButton and YellowButton components, these components are useful for different cases but if you use the Yellow component instead of BaseButton the functionality is not broken because they use the same props object with each other.
+  d. **Interface segregation:** I take this principle into account since no component of this application receives fields that it will not use. Example: The `<MatchList />` component receives only two parameters called 'matches' and 'onSaveMatch'.
+  e. **Dependency inversion:**  In this case, the 'onEndGame' callback method no longer depends on the `<ScoreBoardForm />` component but is passed as a parameter and its logic has been abstracted so that its parent component `<ScoreBoard />` controls it and modifies the global state from 'matches'.
+
+* **Edges cases:** I've added new cases that weren't in the original requirements, like validating input data if fields are numeric or empty, as well as displaying messages when the match list and summary list have no fields, added a match list that It allows me to update each match.
+
 To overcome this challenge, I analyzed the coding exercise, and later, I was up to structure a solution that fits the problem posed. I have divided this problem into three parts:
 
 1. I went through the coding exercise that the main test cases came out of. [See the Challenge section](#the-challenge).
